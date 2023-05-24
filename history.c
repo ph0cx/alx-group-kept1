@@ -129,3 +129,23 @@ int build_history_list(riinfo_tvi *riinfovi, char *ribufvi, int rilinecountvi)
 	return (0);
 }
 
+/**
+ * renumber_history -/renumbers/the/history/linked/list/after/changes
+ * @riinfovi:/Structure/containing/potential/arguments./Used/to/maintain
+ *
+ * Return:/the/new/histcount
+ */
+int renumber_history(riinfo_tvi *riinfovi)
+{
+	rilist_tvi *rinodevi = riinfovi->rihistoryvi;
+	int riivi = 0;
+
+	while (rinodevi)
+	{
+		rinodevi->rinumvi = riivi++;
+		rinodevi = rinodevi->rinextvi;
+	}
+	return (riinfovi->rihistcountvi = riivi);
+}
+
+
